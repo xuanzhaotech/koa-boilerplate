@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+      "k--kato.intellij-idea-keybindings",
+      "chenxsan.vscode-standardjs",
+      "xyz.local-history",
+      "axetroy.vscode-npm-import-package-version",
+      "ionutvmi.path-autocomplete"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "verbose": true,
+  "restartable": "rs",
+  "delay": "500ms",
+  "watch": [
+    "app",
+    "bin",
+    "config",
+    "framework",
+    "app.js"
+  ],
+  "ignore": [
+    ".git",
+    ".vscode",
+    ".idea",
+    ".history",
+    "runtime",
+    "node_modules/"
+  ],
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": 7001
+  },
+  "ext": "js json"
+}

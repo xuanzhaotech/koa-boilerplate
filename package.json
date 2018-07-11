@@ -1,0 +1,92 @@
+{
+  "name": "koa-boilerplate",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A koa.js app",
+  "keywords": [
+    "koa",
+    "koa2",
+    "boilerplate",
+    "wechat"
+  ],
+  "main": "./bin/www",
+  "scripts": {
+    "prestart": "npm i --production",
+    "start": "pm2 restart ./pm2.config.js",
+    "poststart": "pm2 show koa-boilerplate",
+    "dev": "nodemon ./bin/local",
+    "debug": "nodemon --inspect ./bin/local",
+    "lint": "standard \"*.js\" \"{app,framework,config}/**/*.js\" \"bind/**/*\" --verbose | snazzy",
+    "postversion": "git push --follow-tags origin master && npm run changelog",
+    "cz": "git-cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
+    "postchangelog": "git commit -am 'release' && git push"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint -- --fix",
+      "git add"
+    ]
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "**/node_modules/**"
+    ],
+    "globals": [],
+    "plugins": [
+      "markdown",
+      "html"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "port": 8080
+  },
+  "files": [
+    "app/**/*.*",
+    "bin/**/*.*",
+    "config/**/*.*",
+    "app.js"
+  ],
+  "dependencies": {
+    "axios": "^0.18.0",
+    "extend2": "^1.0.0",
+    "koa": "^2.5.1",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "mkdirp": "^0.5.1",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.5",
+    "commitizen": "^2.10.1",
+    "conventional-changelog-cli": "^2.0.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "husky": "^1.0.0-rc.12",
+    "lint-staged": "^7.2.0",
+    "mockjs": "^1.0.1-beta3",
+    "nodemon": "^1.17.5",
+    "snazzy": "^7.1.1",
+    "standard": "^11.0.1"
+  },
+  "engines": {
+    "node": ">7.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/zhengxs2018/koa-boilerplate/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhengxs2018/koa-boilerplate"
+  },
+  "author": "郑贤森<zhengxs2018@foxmail.com>",
+  "license": "MIT"
+}

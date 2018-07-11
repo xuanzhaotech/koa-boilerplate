@@ -1,0 +1,33 @@
+#!/usr/local/node
+'use strict'
+
+const app = require('../app.js')
+
+const listen = app.config.listen
+const server = app.listen(listen.port)
+
+server.on('listening', function onListening () {
+  const addr = server.address()
+  console.info(
+    `Listening on ${
+      typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port
+    }`
+  )
+})
+
+server.on('error', function onError (error) {
+  if (error.syscall !== 'listen') {
+    throw error
+  }
+
+  // handle specific listen errors with friendly messages
+  if (error.code === 'EACCES') {
+    console.error(`${listen.port} requires elevated privileges`)
+    process.exit(1)
+  } else if (error.code === 'EADDRINUSE') {
+    console.error(`${listen.port} is already in use`)
+    process.exit(1)
+  } else {
+    throw error
+  }
+})
